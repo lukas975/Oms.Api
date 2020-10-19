@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Oms.Domain.Entities;
+using Oms.Fixtures;
 using Oms.Infrastructure.Repositories;
 using Shouldly;
 using System;
@@ -9,20 +10,22 @@ using Xunit;
 
 namespace Oms.Infrastructure.Tests
 {
-    public class CmRepositoryTests
+    public class CmRepositoryTests : IClassFixture<OmsContextFactory>
     {
+        private readonly CmRepository _sut;
+        private readonly TestOmsContext _context;
+
+        public CmRepositoryTests(OmsContextFactory omsContextFactory)
+        {
+            _context = omsContextFactory.ContextInstance;
+            _sut = new CmRepository(_context);
+        }
+
+
         [Fact]
         public async Task should_get_data()
         {
-            var options = new DbContextOptionsBuilder<OmsContext>()
-                .UseInMemoryDatabase(databaseName: "should_get_data")
-                .Options;
-
-            await using var context = new TestOmsContext(options);
-            context.Database.EnsureCreated();
-
-            var sut = new CmRepository(context);
-            var result = await sut.GetAsync();
+            var result = await _sut.GetAsync();
             
             result.ShouldNotBeNull();
         }
@@ -30,15 +33,7 @@ namespace Oms.Infrastructure.Tests
         [Fact]
         public async Task should_returns_null_with_id_not_present()
         {
-            var options = new DbContextOptionsBuilder<OmsContext>()
-                .UseInMemoryDatabase(databaseName: "should_returns_null_with_id_not_present")
-                .Options;
-
-            await using var context = new TestOmsContext(options);
-            context.Database.EnsureCreated();
-
-            var sut = new CmRepository(context);
-            var result = await sut.GetAsync(Guid.NewGuid());
+            var result = await _sut.GetAsync(Guid.NewGuid());
 
             result.ShouldBeNull();
         }
@@ -47,15 +42,7 @@ namespace Oms.Infrastructure.Tests
         [InlineData("b5b05534-9263-448c-a69e-0bbd8b3eb90e")]
         public async Task should_return_record_by_id(string guid)
         {
-            var options = new DbContextOptionsBuilder<OmsContext>()
-                .UseInMemoryDatabase(databaseName: "should_return_record_by_id")
-                .Options;
-            
-            await using var context = new TestOmsContext(options);
-            context.Database.EnsureCreated();
-
-            var sut = new CmRepository(context);
-            var result = await sut.GetAsync(new Guid(guid));
+            var result = await _sut.GetAsync(new Guid(guid));
             
             result.CmsId.ShouldBe(new Guid(guid));
         }
@@ -81,20 +68,11 @@ namespace Oms.Infrastructure.Tests
                 },
                 FactoryId = new Guid("c04f05c0-f6ad-44d1-a400-3375bfb5dfd6")
             };
-
-            var options = new DbContextOptionsBuilder<OmsContext>()
-                .UseInMemoryDatabase("should_add_new_cm")
-                .Options;
             
-            await using var context = new TestOmsContext(options);
-            context.Database.EnsureCreated();
-
-            var sut = new CmRepository(context);
-            sut.Add(testCm);
+            _sut.Add(testCm);
+            await _sut.UnitOfWork.SaveEntitiesAsync();
             
-            await sut.UnitOfWork.SaveEntitiesAsync();
-            
-            context.Cms
+            _context.Cms
                 .FirstOrDefault(_ => _.CmsId == testCm.CmsId)
                 .ShouldNotBeNull();
         }
@@ -122,18 +100,10 @@ namespace Oms.Infrastructure.Tests
                 FactoryId = new Guid("c04f05c0-f6ad-44d1-a400-3375bfb5dfd6")
             };
 
-            var options = new DbContextOptionsBuilder<OmsContext>()
-                .UseInMemoryDatabase("should_update_cm")
-                .Options;
+            _sut.Update(testCm);
+            await _sut.UnitOfWork.SaveEntitiesAsync();
 
-            await using var context = new TestOmsContext(options);
-            context.Database.EnsureCreated();
-
-            var sut = new CmRepository(context);
-            sut.Update(testCm);
-
-            await sut.UnitOfWork.SaveEntitiesAsync();
-            context.Cms
+            _context.Cms
                 .FirstOrDefault(x => x.CmsId == testCm.CmsId)
                 ?.FactoryId.ShouldBe(new Guid("c04f05c0-f6ad-44d1-a400-3375bfb5dfd6"));
         }

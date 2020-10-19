@@ -1,8 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Oms.Domain.Entities;
+using Oms.Infrastructure;
 using Oms.Infrastructure.Tests.Extensions;
 
-namespace Oms.Infrastructure.Tests
+namespace Oms.Fixtures
 {
     public class TestOmsContext : OmsContext
     {
