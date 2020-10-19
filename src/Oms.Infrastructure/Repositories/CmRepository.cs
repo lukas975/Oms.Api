@@ -32,8 +32,8 @@ namespace Oms.Infrastructure.Repositories
             var cm = await _context.Cms
             .AsNoTracking()
             .Where(x => x.CmsId == id)
-            .Include(x => x.Products)
-            .Include(x => x.OrderDetails).FirstOrDefaultAsync();
+            .Include(x => x.OrderDetails)
+            .FirstOrDefaultAsync();
             return cm;
         }
         public Cm Add(Cm cm)
