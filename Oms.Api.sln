@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oms.Infrastructure.Tests", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oms.Fixtures", "tests\Oms.Fixtures\Oms.Fixtures.csproj", "{C60B5758-B002-4ECB-92BE-9EFBB0FB3B3C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oms.Domain.Tests", "tests\Oms.Domain.Tests\Oms.Domain.Tests.csproj", "{51CC30A2-6859-46FE-A5B2-519725CF3CDD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +89,18 @@ Global
 		{C60B5758-B002-4ECB-92BE-9EFBB0FB3B3C}.Release|x64.Build.0 = Release|Any CPU
 		{C60B5758-B002-4ECB-92BE-9EFBB0FB3B3C}.Release|x86.ActiveCfg = Release|Any CPU
 		{C60B5758-B002-4ECB-92BE-9EFBB0FB3B3C}.Release|x86.Build.0 = Release|Any CPU
+		{51CC30A2-6859-46FE-A5B2-519725CF3CDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51CC30A2-6859-46FE-A5B2-519725CF3CDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51CC30A2-6859-46FE-A5B2-519725CF3CDD}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{51CC30A2-6859-46FE-A5B2-519725CF3CDD}.Debug|x64.Build.0 = Debug|Any CPU
+		{51CC30A2-6859-46FE-A5B2-519725CF3CDD}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{51CC30A2-6859-46FE-A5B2-519725CF3CDD}.Debug|x86.Build.0 = Debug|Any CPU
+		{51CC30A2-6859-46FE-A5B2-519725CF3CDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51CC30A2-6859-46FE-A5B2-519725CF3CDD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51CC30A2-6859-46FE-A5B2-519725CF3CDD}.Release|x64.ActiveCfg = Release|Any CPU
+		{51CC30A2-6859-46FE-A5B2-519725CF3CDD}.Release|x64.Build.0 = Release|Any CPU
+		{51CC30A2-6859-46FE-A5B2-519725CF3CDD}.Release|x86.ActiveCfg = Release|Any CPU
+		{51CC30A2-6859-46FE-A5B2-519725CF3CDD}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -97,6 +111,7 @@ Global
 		{869E80F9-0BE8-4B54-B6B6-4DDFBDC46F08} = {0DFFAB61-EC45-440B-B80B-F47279090FEE}
 		{311BA462-B609-45A0-A8CE-8F7E127151EF} = {351214A1-1615-4853-B3D5-2FE47822EB88}
 		{C60B5758-B002-4ECB-92BE-9EFBB0FB3B3C} = {351214A1-1615-4853-B3D5-2FE47822EB88}
+		{51CC30A2-6859-46FE-A5B2-519725CF3CDD} = {351214A1-1615-4853-B3D5-2FE47822EB88}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BCF4BD92-DB4B-4E53-920E-E16F620983BB}

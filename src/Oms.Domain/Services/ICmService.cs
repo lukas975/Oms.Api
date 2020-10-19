@@ -7,7 +7,7 @@ namespace Oms.Domain.Services
 {
     public interface ICmService
     {
-        Task<IEnumerable<CmResponse>> GetCmAsync();
+        Task<IEnumerable<CmResponse>> GetCmsAsync();
         Task<CmResponse> GetCmAsync(GetCmRequest request);
         Task<CmResponse> AddCmAsync(AddCmRequest request);
         Task<CmResponse> EditCmAsync(EditCmRequest request);

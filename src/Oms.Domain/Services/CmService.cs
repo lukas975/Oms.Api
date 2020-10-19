@@ -5,7 +5,6 @@ using Oms.Domain.Responses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Oms.Domain.Services
@@ -21,7 +20,7 @@ namespace Oms.Domain.Services
             _cmMapper = cmMapper;
         }
 
-        public async Task<IEnumerable<CmResponse>> GetCmAsync()
+        public async Task<IEnumerable<CmResponse>> GetCmsAsync()
         {
             var result = await _cmRepository.GetAsync();
 
