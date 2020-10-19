@@ -1,0 +1,9 @@
+C:\Users\Luka\source\repos\Oms.Api\src\Oms.Domain\bin\Debug\netstandard2.1\Oms.Domain.deps.json
+C:\Users\Luka\source\repos\Oms.Api\src\Oms.Domain\bin\Debug\netstandard2.1\Oms.Domain.dll
+C:\Users\Luka\source\repos\Oms.Api\src\Oms.Domain\bin\Debug\netstandard2.1\Oms.Domain.pdb
+C:\Users\Luka\source\repos\Oms.Api\src\Oms.Domain\obj\Debug\netstandard2.1\Oms.Domain.csprojAssemblyReference.cache
+C:\Users\Luka\source\repos\Oms.Api\src\Oms.Domain\obj\Debug\netstandard2.1\Oms.Domain.AssemblyInfoInputs.cache
+C:\Users\Luka\source\repos\Oms.Api\src\Oms.Domain\obj\Debug\netstandard2.1\Oms.Domain.AssemblyInfo.cs
+C:\Users\Luka\source\repos\Oms.Api\src\Oms.Domain\obj\Debug\netstandard2.1\Oms.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Luka\source\repos\Oms.Api\src\Oms.Domain\obj\Debug\netstandard2.1\Oms.Domain.dll
+C:\Users\Luka\source\repos\Oms.Api\src\Oms.Domain\obj\Debug\netstandard2.1\Oms.Domain.pdb
