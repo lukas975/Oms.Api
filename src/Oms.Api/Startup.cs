@@ -12,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Oms.Api.Extensions;
+using Oms.Domain.Extensions;
 using Oms.Infrastructure;
 
 namespace Oms.Api
@@ -31,7 +32,11 @@ namespace Oms.Api
             services
                 .AddEntityFrameworkSqlServer()
                 .AddOmsContext(Configuration.GetSection("DataSource:ConnectionString").Value)
-                .AddControllers();
+                .AddMappers()
+                .AddServices()
+                .AddControllers()
+                .AddValidation();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
