@@ -14,6 +14,10 @@ namespace Oms.Infrastructure.SchemaDefinitions
 
             builder.HasKey(k => k.Gtin);
 
+            builder.Property(p => p.Gtin)
+                .HasMaxLength(14)
+                .IsFixedLength();
+
             builder.Property(p => p.Quantity)
                 .IsRequired();
 

@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Oms.Api.Migrations
 {
@@ -15,7 +14,7 @@ namespace Oms.Api.Migrations
                 schema: "oms",
                 columns: table => new
                 {
-                    FactoryId = table.Column<Guid>(nullable: false),
+                    FactoryId = table.Column<string>(nullable: false),
                     FactoryName = table.Column<string>(nullable: true),
                     FactoryAddress = table.Column<string>(nullable: true),
                     FactoryCountry = table.Column<string>(nullable: false),
@@ -35,7 +34,7 @@ namespace Oms.Api.Migrations
                 schema: "oms",
                 columns: table => new
                 {
-                    Gtin = table.Column<Guid>(nullable: false),
+                    Gtin = table.Column<string>(fixedLength: true, maxLength: 14, nullable: false),
                     Quantity = table.Column<long>(nullable: false),
                     SerialNumberType = table.Column<string>(nullable: false),
                     SerialNumbers = table.Column<string>(nullable: false),
@@ -51,9 +50,9 @@ namespace Oms.Api.Migrations
                 schema: "oms",
                 columns: table => new
                 {
-                    CmsId = table.Column<Guid>(nullable: false),
+                    CmsId = table.Column<string>(nullable: false),
                     Products = table.Column<string>(nullable: false),
-                    FactoryId = table.Column<Guid>(nullable: false)
+                    FactoryId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -64,7 +63,7 @@ namespace Oms.Api.Migrations
                         principalSchema: "oms",
                         principalTable: "OrderDatails",
                         principalColumn: "FactoryId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(

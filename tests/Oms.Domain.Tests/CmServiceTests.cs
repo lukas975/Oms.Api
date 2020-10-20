@@ -34,17 +34,17 @@ namespace Oms.Domain.Tests
             result.ShouldNotBeNull();
         }
         [Theory]
-        [InlineData("b5b05534-9263-448c-a69e-0bbd8b3eb90e")]
-        public async Task getcm_should_return_right_data(string guid)
+        [InlineData("1001")]
+        public async Task getcm_should_return_right_data(string id)
         {
             CmService sut = new CmService(_cmRepository, _mapper);
 
             var result = await sut.GetCmAsync(new GetCmRequest
             {
-                CmsId = new Guid(guid)
+                CmsId = id
             });
 
-            result.CmsId.ShouldBe(new Guid(guid));
+            result.CmsId.ShouldBe(id);
         }
 
         [Fact]
@@ -60,11 +60,12 @@ namespace Oms.Domain.Tests
         {
             var testCm = new AddCmRequest
             {
+                CmsId = "1002",
                 Products = new List<OrderProduct>()
                 {
                     new OrderProduct()
                     {
-                        Gtin = new Guid("86bff4f7-05a7-46b6-ba73-d43e2c45840f"),
+                        Gtin = "2001",
                         Quantity = 3,
                         SerialNumberType = "SELF_MADE",
                         SerialNumbers = new System.Collections.Generic.List<string>()
@@ -74,7 +75,7 @@ namespace Oms.Domain.Tests
                         TemplateId = "3"
                     }
                 },
-                FactoryId = new Guid("c04f05c0-f6ad-44d1-a400-3375bfb5dfd6")
+                FactoryId = "3001"
             };
 
             ICmService sut = new CmService(_cmRepository, _mapper);
@@ -88,12 +89,12 @@ namespace Oms.Domain.Tests
         {
             var testCm = new EditCmRequest
             {
-                CmsId = new Guid("b5b05534-9263-448c-a69e-0bbd8b3eb90e"),
+                CmsId = "1001",
                 Products = new List<OrderProduct>()
                 {
                     new OrderProduct()
                     {
-                        Gtin = new Guid("86bff4f7-05a7-46b6-ba73-d43e2c45840f"),
+                        Gtin = "2001",
                         Quantity = 3,
                         SerialNumberType = "SELF_MADE",
                         SerialNumbers = new System.Collections.Generic.List<string>()
@@ -103,7 +104,7 @@ namespace Oms.Domain.Tests
                         TemplateId = "3"
                     }
                 },
-                FactoryId = new Guid("c04f05c0-f6ad-44d1-a400-3375bfb5dfd6")
+                FactoryId = "3001"
             };
 
             ICmService sut = new CmService(_cmRepository, _mapper);

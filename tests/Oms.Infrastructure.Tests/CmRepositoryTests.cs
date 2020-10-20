@@ -33,18 +33,18 @@ namespace Oms.Infrastructure.Tests
         [Fact]
         public async Task should_returns_null_with_id_not_present()
         {
-            var result = await _sut.GetAsync(Guid.NewGuid());
+            var result = await _sut.GetAsync("");
 
             result.ShouldBeNull();
         }
 
         [Theory]
-        [InlineData("b5b05534-9263-448c-a69e-0bbd8b3eb90e")]
-        public async Task should_return_record_by_id(string guid)
+        [InlineData("1001")]
+        public async Task should_return_record_by_id(string id)
         {
-            var result = await _sut.GetAsync(new Guid(guid));
+            var result = await _sut.GetAsync(id);
             
-            result.CmsId.ShouldBe(new Guid(guid));
+            result.CmsId.ShouldBe(id);
         }
 
         [Fact]
@@ -52,11 +52,12 @@ namespace Oms.Infrastructure.Tests
         {
             var testCm = new Cm
             {
+                CmsId = "1002",
                 Products = new System.Collections.Generic.List<OrderProduct>()
                 {
                     new OrderProduct()
                     {
-                        Gtin = new Guid("86bff4f7-05a7-46b6-ba73-d43e2c45840f"),
+                        Gtin = "2001",
                         Quantity = 3,
                         SerialNumberType = "SELF_MADE",
                         SerialNumbers = new System.Collections.Generic.List<string>()
@@ -66,7 +67,7 @@ namespace Oms.Infrastructure.Tests
                         TemplateId = "3"
                     }
                 },
-                FactoryId = new Guid("c04f05c0-f6ad-44d1-a400-3375bfb5dfd6")
+                FactoryId = "3001"
             };
             
             _sut.Add(testCm);
@@ -82,12 +83,12 @@ namespace Oms.Infrastructure.Tests
         {
             var testCm = new Cm
             {
-                CmsId = new Guid("b5b05534-9263-448c-a69e-0bbd8b3eb90e"),
+                CmsId = "1001",
                 Products = new System.Collections.Generic.List<OrderProduct>()
                 {
                     new OrderProduct()
                     {
-                        Gtin = new Guid("86bff4f7-05a7-46b6-ba73-d43e2c45840f"),
+                        Gtin = "2002",
                         Quantity = 3,
                         SerialNumberType = "SELF_MADE",
                         SerialNumbers = new System.Collections.Generic.List<string>()
@@ -97,7 +98,7 @@ namespace Oms.Infrastructure.Tests
                         TemplateId = "3"
                     }
                 },
-                FactoryId = new Guid("c04f05c0-f6ad-44d1-a400-3375bfb5dfd6")
+                FactoryId = "3001"
             };
 
             _sut.Update(testCm);
@@ -105,7 +106,7 @@ namespace Oms.Infrastructure.Tests
 
             _context.Cms
                 .FirstOrDefault(x => x.CmsId == testCm.CmsId)
-                ?.FactoryId.ShouldBe(new Guid("c04f05c0-f6ad-44d1-a400-3375bfb5dfd6"));
+                ?.FactoryId.ShouldBe("3001");
         }
 
     }

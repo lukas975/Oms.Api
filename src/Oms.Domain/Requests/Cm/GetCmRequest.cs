@@ -1,9 +1,7 @@
-﻿using System;
-
-namespace Oms.Domain.Requests.Cm
+﻿namespace Oms.Domain.Requests.Cm
 {
     public class GetCmRequest
     {
-        public Guid CmsId { get; set; }
+        public string CmsId { get; set; }
     }
 }

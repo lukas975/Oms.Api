@@ -27,7 +27,7 @@ namespace Oms.Infrastructure.Repositories
             .ToListAsync();
         }
 
-        public async Task<Cm> GetAsync(Guid id)
+        public async Task<Cm> GetAsync(string id)
         {
             var cm = await _context.Cms
             .AsNoTracking()

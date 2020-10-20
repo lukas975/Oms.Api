@@ -8,7 +8,7 @@ namespace Oms.Domain.Repositories
     public interface ICmRepository : IRepository
     {
         Task<IEnumerable<Cm>> GetAsync();
-        Task<Cm> GetAsync(Guid id);
+        Task<Cm> GetAsync(string id);
         Cm Add(Cm cm);
         Cm Update(Cm cm);
         Cm Delete(Cm cm);

@@ -24,6 +24,7 @@ namespace Oms.Domain.Mappers
 
             var cm = new Cm
             {
+                CmsId = request.CmsId,
                 Products = request.Products,
                 FactoryId = request.FactoryId
             };
