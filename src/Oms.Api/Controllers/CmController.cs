@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Oms.Api.Filters;
 using Oms.Domain.Requests.Cm;
 using Oms.Domain.Services;
 using System.Threading.Tasks;
@@ -26,6 +27,7 @@ namespace Oms.Api.Controllers
         }
 
         [HttpGet("{id}")]
+        [CmExists]
         public async Task<IActionResult> GetById(string id)
         {
             var result = await _cmService.GetCmAsync(new GetCmRequest{ CmsId = id });
@@ -42,6 +44,7 @@ namespace Oms.Api.Controllers
         }
 
         [HttpPut("{id}")]
+        [CmExists]
         public async Task<IActionResult> Put(string id, EditCmRequest request)
         {
             request.CmsId = id;

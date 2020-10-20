@@ -14,9 +14,9 @@ namespace Oms.Api.Tests.Controllers
     {
         private readonly InMemoryApplicationFactory<Startup> _factory;
         
-        public CmControllerTests(InMemoryApplicationFactory<Startup> factory)
+        public CmControllerTests()
         {
-            _factory = factory;
+            _factory = new InMemoryApplicationFactory<Startup>();
         }
 
         [Theory]
