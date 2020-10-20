@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Oms.Domain.Entities;
 using Oms.Domain.Repositories;
 using Oms.Infrastructure.SchemaDefinitions;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Oms.Infrastructure
 {
-    public class OmsContext : DbContext, IUnitOfWork
+    public class OmsContext : IdentityDbContext<User>, IUnitOfWork
     {
         public const string DEFAULT_SCHEMA = "oms";
         public DbSet<Cm> Cms { get; set; }

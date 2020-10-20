@@ -6,6 +6,7 @@ using Microsoft.Extensions.Hosting;
 using Oms.Api.Extensions;
 using Oms.Domain.Extensions;
 using Oms.Domain.Repositories;
+using Oms.Infrastructure.Extensions;
 using Oms.Infrastructure.Repositories;
 
 namespace Oms.Api
@@ -25,6 +26,8 @@ namespace Oms.Api
             services
                 .AddOmsContext(Configuration.GetSection("DataSource:ConnectionString").Value)
                 .AddScoped<ICmRepository, CmRepository>()
+                .AddScoped<IUserRepository, UserRepository>()
+                .AddTokenAuthentication(Configuration)
                 .AddMappers()
                 .AddServices()
                 .AddControllers()
@@ -43,6 +46,8 @@ namespace Oms.Api
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 

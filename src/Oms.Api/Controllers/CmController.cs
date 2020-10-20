@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Oms.Api.Filters;
 using Oms.Domain.Requests.Cm;
 using Oms.Domain.Services;
@@ -6,9 +7,10 @@ using System.Threading.Tasks;
 
 namespace Oms.Api.Controllers
 {
-
+    [Authorize]
     [Route("api/cms")]
     [ApiController]
+    [JsonException]
     public class CmController : ControllerBase
     {
         private readonly ICmService _cmService;

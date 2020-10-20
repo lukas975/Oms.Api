@@ -19,7 +19,8 @@ namespace Oms.Domain.Extensions
         public static IServiceCollection AddServices(this IServiceCollection services)
         {
             services
-                .AddScoped<ICmService, CmService>();
+                .AddScoped<ICmService, CmService>()
+                .AddScoped<IUserService, UserService>();
             return services;
         }
         public static IMvcBuilder AddValidation(this IMvcBuilder builder)
