@@ -13,7 +13,9 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Oms.Api.Extensions;
 using Oms.Domain.Extensions;
+using Oms.Domain.Repositories;
 using Oms.Infrastructure;
+using Oms.Infrastructure.Repositories;
 
 namespace Oms.Api
 {
@@ -29,13 +31,23 @@ namespace Oms.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //services
+            //    .AddEntityFrameworkSqlServer()
+            //    .AddOmsContext(Configuration.GetSection("DataSource:ConnectionString").Value)
+            //    .AddMappers()
+            //    .AddServices()
+            //    .AddControllers()
+            //    .AddValidation();
             services
-                .AddEntityFrameworkSqlServer()
                 .AddOmsContext(Configuration.GetSection("DataSource:ConnectionString").Value)
+                .AddScoped<ICmRepository, CmRepository>()
+                //.AddScoped<IOrderProductRepository, OrderRepository>()
+                //.AddScoped<IGenreRepository, GenreRepository>()
                 .AddMappers()
                 .AddServices()
                 .AddControllers()
-                .AddValidation();
+                .AddValidation()
+                .AddJsonOptions(options => options.JsonSerializerOptions.IgnoreNullValues = true);
 
         }
 

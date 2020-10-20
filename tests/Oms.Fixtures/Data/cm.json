@@ -13,6 +13,24 @@
         ],
         "templateId": 3
       }
-    ]
+    ],
+    "factoryId": "3001"
+  },
+  {
+    "cmsId": "1007",
+    "products": [
+      {
+        "gtin": "2002",
+        "quantity": 3,
+        "serialNumberType": "SELF_MADE",
+        "serialNumbers": [
+          "XT6c84e",
+          "2kY39Om",
+          "X4ebssJ"
+        ],
+        "templateId": 3
+      }
+    ],
+    "factoryId": "3002"
   }
 ]

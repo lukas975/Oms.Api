@@ -1,9 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Oms.Domain.Entities;
+﻿using Oms.Domain.Entities;
 using Oms.Fixtures;
 using Oms.Infrastructure.Repositories;
 using Shouldly;
-using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Xunit;
